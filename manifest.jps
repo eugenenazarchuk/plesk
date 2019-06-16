@@ -62,6 +62,7 @@ nodes:
     image: plesk/plesk:preview
 
 onInstall:
+  - cmd[cp]: chmod 4510 /opt/psa/admin/sbin/wrapper
   - cmd[cp]: while [ "$(pgrep nginx)" == "" ];do sleep 2; done; sleep 10;
   - cmd[cp]:
     - while true; do plesk bin cloning --status && break ; done
